@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home | Awesome Tech Blogs</title>
+
+
+<%- include("partials/header.ejs") %>
+
+        <!-- Main Content Starts Here -->
+        
+        <main class="container p-4 text-bg-dark rounded-1 shadow">
+
+            <h2 class="py-3">Welcome to Awesome Tech Blogs</h2>
+
+            <form action="/post" method="post">
+                <input type="text" name="postTitle" id="postTitle" class="form-control-dark" placeholder="Post Title" required> <br><br>
+                <textarea rows="10" cols="60" name="postBody" class="form-control-dark" placeholder="write your articles here" required></textarea> <br><br>
+                <input class="btn btn-primary" type="submit" value="Publish">
+            </form>
+
+            <h3 class="my-4"><strong>Articles</strong></h3>
+            <article>
+                <% if (locals.ppp) { %>
+                    <% for( let i = ppp.length-1; i >= 0; i-- ) { %>
+                        <h4><%= ppp[i].postTitle %></h4>
+                        <p><%= ppp[i].postBody.slice(0,50) %>..&nbsp;<a class="link-info" href="/read/<%= ppp[i].id %>">read more</a></p>                    
+                        <a class="link-info" href="/edit/<%= ppp[i].id %>">Edit</a>&nbsp;&nbsp;
+                        <a class="link-info" href="/delete/<%= ppp[i].id %>">Delete</a><br><br>
+                    <% } %>
+                <% } else { %>
+                        <p>No posts to display.</p>              
+                <% } %>
+
+                <% if(ppp.length === 0) { %>
+                    <p>No posts to display</p>
+                <% } %>
+            </article>
+
+        </main>
+
+        <!-- Main Content Ends Here -->
+
+<%- include("partials/footer.ejs") %>

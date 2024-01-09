@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Posts | ATB</title>
+
+<%- include("partials/header.ejs") %>
+
+        <main class="container p-4 text-bg-dark rounded-1 shadow">
+            <% if (locals.qqq) { %>
+                <h2 class="my-3">Edit Posts</h2>
+                <form action="/edit/<%= qqq.id %>" method="post">
+                    <input type="text" name="postTitle" id="postTitle" placeholder="Post Title" value="<%= qqq.postTitle %>" required> <br><br>
+                    <textarea rows="10" cols="60" name="postBody" placeholder="write your articles here" required><%= qqq.postBody %></textarea> <br><br>
+                    <input class="btn btn-primary" type="submit" value="Update">
+                </form>
+            <% } else { %>
+                <h3>No post to edit.</h3>             
+            <% } %>
+        </main>
+
+<%- include("partials/footer.ejs") %>

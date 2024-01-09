@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #CCC8AA;
+}
+
+main {
+    flex:1;
+    opacity: 0.9;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+pre {
+    text-wrap: wrap;
+}
